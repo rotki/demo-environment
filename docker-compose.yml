@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+  proxy:
+    build: .
+    environment:
+      ROTKI_URL: http://rotki:80
+      PORT: 8899
+    networks:
+      - internal
+    ports:
+      - "8899:8899"
+  rotki:
+    image: "rotki/rotki:v1.27.1"
+    networks:
+      - internal
+
+networks:
+  internal:
